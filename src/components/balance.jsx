@@ -1,14 +1,16 @@
 import { Typography } from "@material-ui/core";
-import React from "react";
+import React, { useContext } from "react";
+import { ExpenseContext } from "./context/context";
 
 function Balance() {
+  const { getIncome, getExpense } = useContext(ExpenseContext);
+  const totalBalance = getIncome() + getExpense();
   return (
-    <div>
-      <Typography>Current Balance is 0</Typography>
-      <div>
-        <Typography>Income: 0</Typography>
-        <Typography>Expense: 0</Typography>
-      </div>
+    <div style={{ textAlign: "center", color: "goldenrod" }}>
+      <Typography variant="h6">
+        Current Balance is{" "}
+        <span style={{ fontSize: "2rem" }}>${totalBalance}</span>
+      </Typography>
     </div>
   );
 }
