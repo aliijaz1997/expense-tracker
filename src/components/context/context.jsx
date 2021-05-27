@@ -29,7 +29,8 @@ function ExpenseProvider({ children }) {
       if (state.transaction[i].amount > 0)
         income += state.transaction[i].amount;
     }
-    return income;
+    console.log(typeof parseInt(income, 10));
+    return parseInt(income, 10);
   };
 
   const getExpense = () => {
@@ -44,7 +45,7 @@ function ExpenseProvider({ children }) {
     dispatch({
       type: "ADD_TRANSACTION",
       description: data.description,
-      amount: data.amount,
+      amount: parseInt(data.amount, 10),
       id: shortid.generate(),
     });
   }
